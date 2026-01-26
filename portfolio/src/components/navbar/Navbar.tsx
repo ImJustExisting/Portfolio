@@ -1,22 +1,39 @@
 import { NavLink } from "react-router-dom";
+import { toggleTheme } from "../../store/themeSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Logo from '../../assets/WM M.svg';
+import LMODE from '../../assets/lightMode.svg';
+import DMODE from '../../assets/darkMode.svg';
+
+import style from './Navbar.module.css';
+
 
 export default function Navbar() {
-  const linkStyle = ({ isActive }: { isActive: boolean }) => ({
-    fontWeight: isActive ? 700 : 400,
-    textDecoration: "none",
-    marginRight: 12,
-  });
+  const dispatch = useAppDispatch();
+  const mode = useAppSelector((state) => state.theme.mode);
+
+  const iconSrc = mode === "dark" ? LMODE : DMODE;
+  const label = mode === "dark" ? "Switch to light theme" : "Switch to dark theme";
 
   return (
-    <>
-      <nav style={{ padding: 16 }}>
-        <img src={Logo} alt="Logo" style={{ width: 100, height: 100 }} />
-        <NavLink to="/" style={linkStyle}>Home</NavLink>
-        <NavLink to="/about" style={linkStyle}>About</NavLink>
-        <NavLink to="/projects" style={linkStyle}>Projects</NavLink>
-        <NavLink to="/contact" style={linkStyle}>Contact</NavLink>
-      </nav>
-    </>
+    
+    <nav style={{ padding: 16, display: "flex", gap: 12, alignItems: "center" }}>
+      <img src={Logo} alt="Logo" style={{ height: 40, marginRight: 16 }} />
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/projects">Projects</NavLink>
+      <NavLink to="/contact">Contact</NavLink>
+
+      <button
+        type="button"
+        onClick={() => dispatch(toggleTheme())}
+        className={style.themeToggle}
+        aria-label={label}
+        title={label}
+      >
+        <img src={iconSrc} alt="" width={18} height={18} />
+      </button>
+    </nav>
   );
 }
+

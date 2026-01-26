@@ -1,0 +1,12 @@
+.ThemeIcon {
+  margin-left: auto;
+  width: 40;
+  height: 40;
+  border-radius: 10;
+  border: 1px solid currentColor;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
