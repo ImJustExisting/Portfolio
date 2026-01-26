@@ -1,17 +1,15 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import ErrorBoundary from "./components/ErrorBoundary";
+import ErrorBoundary from "./components/errorboundary/ErrorBoundary";
 
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
 
-import ProjectsLayout from "./pages/Projects/ProjectsLayout";
-import ProjectsList from "./pages/Projects/ProjectsList";
+import ProjectsLayout from "./pages/ProjectsLayout";
+import ProjectsList from "./pages/ProjectList";
 
-// ✅ Lazy-loaded routes (at least two)
 const About = lazy(() => import("./pages/About"));
-const ProjectDetails = lazy(() => import("./pages/Projects/ProjectDetails"));
+const ProjectDetails = lazy(() => import("./pages/ProjectDetails"));
 
 function RouteLoader() {
   return <div style={{ padding: 16 }}>Loading page...</div>;
@@ -33,7 +31,6 @@ export default function App() {
           </Route>
 
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>
