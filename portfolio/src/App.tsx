@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import ErrorBoundary from "./components/errorboundary/ErrorBoundary";
+import RootLayout from "./layouts/RootLayout";
 
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -20,17 +21,15 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<RouteLoader />}>
         <Routes>
-          {/* top-level routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-
-          {/* nested routes for Projects */}
-          <Route path="/projects" element={<ProjectsLayout />}>
-            <Route index element={<ProjectsList />} />
-            <Route path=":projectId" element={<ProjectDetails />} />
+          <Route element={<RootLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<ProjectsLayout />}>
+              <Route index element={<ProjectsList />} />
+              <Route path=":projectId" element={<ProjectDetails />} />
+            </Route>
+            <Route path="/contact" element={<Contact />} />
           </Route>
-
-          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>
