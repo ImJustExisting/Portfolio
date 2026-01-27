@@ -48,10 +48,10 @@ export default function ProjectDetails() {
           rel="noreferrer"
           style={{
             padding: "10px 14px",
-            border: "1px solid currentColor",
             borderRadius: 10,
             textDecoration: "none",
-            color: "var(--CP)"
+            color: "black",
+            backgroundColor: "var(--CP)",
           }}
         >
           View Live Project
