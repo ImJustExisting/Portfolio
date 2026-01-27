@@ -3,6 +3,8 @@
   min-width: 220;
   background-color: var(--CP);
   color: var(--text);
+  border: none;
+  height: 25px;
 }
 
 ::placeholder {
@@ -14,10 +16,14 @@
   padding: 10;
   background-color: var(--CP);
   color: var(--text);
+  border: none;
+  height: 25px;
 }
 
 .sort {
   padding: 10;
   background-color: var(--CP);
   color: var(--text);
+  border: none;
+  height: 25px;
 }
