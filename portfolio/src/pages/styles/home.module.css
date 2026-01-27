@@ -1,0 +1,30 @@
+body,
+html {
+  height: 100%;
+}
+
+.hero {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/profile.png");
+
+  height: 85vh; 
+  min-height: 520px; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.overlay {
+  text-align: center;
+  color: #ffffff;
+}
+
+.overlay p {
+  color: #ffffff;
+}

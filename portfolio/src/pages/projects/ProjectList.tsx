@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../../data/Projects";
 import type { ProjectCategory } from "../../data/Projects";
+import style from "./projects.module.css";
 
 type SortOption = "title-asc" | "title-desc";
 
@@ -47,13 +48,13 @@ export default function ProjectsList() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by title or tag…"
-          style={{ padding: 10, minWidth: 220 }}
+          className={style.searchTag}
         />
 
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value as any)}
-          style={{ padding: 10 }}
+          className={style.selector}
         >
           {categories.map((c) => (
             <option key={c} value={c}>
@@ -65,7 +66,7 @@ export default function ProjectsList() {
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value as SortOption)}
-          style={{ padding: 10 }}
+          className={style.sort}
         >
           <option value="title-asc">Title A–Z</option>
           <option value="title-desc">Title Z–A</option>

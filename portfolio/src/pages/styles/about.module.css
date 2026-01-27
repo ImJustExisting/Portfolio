@@ -1,0 +1,46 @@
+.about {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.hero {
+  padding: 18px 0 8px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 2rem;
+}
+
+.aboutME {
+  max-width: 700px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.CTA{
+    font-weight: 600;
+    margin-top: 12px;
+    color: var(--CP);
+    font-style: italic;
+}
+
+.skills {
+  margin-top: 28px;
+}
+
+
+.grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  border-radius: 14px;
+  padding: 14px;
+  background-color: var(--CP);
+}
+

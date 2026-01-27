@@ -1,5 +1,38 @@
 .SubButton{
     background-color: var(--CP);
-    color: var(--text);
+    color: black;
     padding: "10px 14px";
+}
+
+.SubButton:hover{
+    background-color: var(--text);
+    color: var(--CP);
+    cursor: pointer;
+}
+
+.inputCell{
+    display: block;
+    width: 100%;
+    padding: 10;
+    margin-top: 6;
+    background-color: var(--form);
+    color: var(--text);
+    border: none;
+}
+
+
+.inputMes{
+    display: block;
+    width: 100%;
+    padding: 10;
+    margin-top: 6;
+    min-height: 140;
+    background-color: var(--form);
+    color: var(--text);
+    border: none;
+}
+
+::placeholder{
+    color: var(--muted);
+    border: none;
 }

@@ -1,0 +1,23 @@
+.searchTag {
+  padding: 10;
+  min-width: 220;
+  background-color: var(--CP);
+  color: var(--text);
+}
+
+::placeholder {
+  color: var(--text);
+  font-style: italic;
+}
+
+.selector {
+  padding: 10;
+  background-color: var(--CP);
+  color: var(--text);
+}
+
+.sort {
+  padding: 10;
+  background-color: var(--CP);
+  color: var(--text);
+}
