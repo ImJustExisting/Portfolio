@@ -17,8 +17,8 @@ export default function Navbar() {
 
   return (
     
-    <nav style={{ padding: 16, display: "flex", gap: 12, alignItems: "center" }}>
-      <img src={Logo} alt="Logo" style={{ height: 40, marginRight: 16 }} />
+    <nav className={style.navbar}>
+      <img src={Logo} alt="Logo" className={style.logo} />
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/projects">Projects</NavLink>
@@ -27,11 +27,11 @@ export default function Navbar() {
       <button
         type="button"
         onClick={() => dispatch(toggleTheme())}
-        className={style.themeToggle}
+        className={style.ThemeIcon}
         aria-label={label}
         title={label}
       >
-        <img src={iconSrc} alt="" width={18} height={18} />
+        <img src={iconSrc} alt="" />
       </button>
     </nav>
   );

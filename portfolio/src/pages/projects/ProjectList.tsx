@@ -83,7 +83,7 @@ export default function ProjectsList() {
           <Link
             key={p.id}
             to={`/projects/${p.id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+            style={{ textDecoration: "none", color: "inherit", backgroundColor: "var(--CP)", borderRadius: "12px" }}
           >
             <article
               style={{
@@ -109,6 +109,7 @@ export default function ProjectsList() {
               <div style={{ padding: 14 }}>
                 <h3 style={{ margin: "0 0 6px" }}>{p.title}</h3>
                 <p style={{ margin: 0 }}>{p.shortDescription}</p>
+                <small style={{color: "var(--text)"}}>{p.category} • {p.tags.join(" · ")}</small>
               </div>
             </article>
           </Link>

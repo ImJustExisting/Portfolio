@@ -1,5 +1,6 @@
 import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
+import style from "./styles/contact.module.css";
 
 type FormState = {
   name: string;
@@ -189,7 +190,7 @@ export default function Contact() {
           )}
         </div>
 
-        <button type="submit" disabled={!isFormValid || isSubmitting} style={{ padding: "10px 14px" }}>
+        <button type="submit" disabled={!isFormValid || isSubmitting} className={style.SubButton}>
           {isSubmitting ? "Sending..." : "Send message"}
         </button>
       </form>

@@ -1,12 +1,43 @@
+.navbar {
+  background: var(--nav-bg);
+  color: var(--text);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--text);;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
 .ThemeIcon {
   margin-left: auto;
-  width: 40;
-  height: 40;
-  border-radius: 10;
-  border: 1px solid currentColor;
-  background: transparent;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #F4C31E;  
+  border: 2px solid var(--text);               
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
+
+.ThemeIcon img {
+  width: 18px;
+  height: 18px;
+}
+

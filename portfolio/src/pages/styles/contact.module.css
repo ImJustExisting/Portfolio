@@ -1,0 +1,5 @@
+.SubButton{
+    background-color: var(--CP);
+    color: var(--text);
+    padding: "10px 14px";
+}

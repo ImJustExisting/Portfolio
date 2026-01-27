@@ -1,5 +1,6 @@
 import BBImg from "../assets/BudgetBuddy.png";
 import AOTFImg from "../assets/AOTF.png";
+import PCImg from "../assets/Card.png";
 export type ProjectCategory = "Web" | "Mobile" | "Design";
 
 export type Project = {
@@ -30,9 +31,19 @@ export const projects: Project[] = [
     title: "Acension of The Forgotten",
     category: "Web",
     tags: ["React", "CSS"],
-    shortDescription: "Promotional website for the potential future game Acension of The Forgotten.",
-    longDescription: "Full description…",
+    shortDescription: "Promotional website for the potential game Acension of The Forgotten.",
+    longDescription: "A promotional website with all the information regarding the conceptual Acension of The Forgotten.",
     liveUrl: "https://ascension-project-vercel-deploy.vercel.app/",
     previewImage: AOTFImg
+  },
+  {
+    id: "profileCard",
+    title: "Profile Card",
+    category: "Design",
+    tags: ["Next.js", "Tailwind CSS"],
+    shortDescription: "A small interactive and animated card component.",
+    longDescription: "This card component was built using Next.js and Tailwind CSS. It features interactive elements and smooth animations to enhance user engagement. The design is responsive, ensuring it looks great on all devices. Contains information on me.",
+    liveUrl: "https://cardrepo.vercel.app/",
+    previewImage: PCImg
   },
 ];

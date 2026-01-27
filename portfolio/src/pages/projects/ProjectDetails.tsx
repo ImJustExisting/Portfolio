@@ -16,7 +16,7 @@ export default function ProjectDetails() {
 
   return (
     <section style={{ padding: 16 }}>
-      <Link to="/projects">← Back</Link>
+      <Link to="/projects" style={{color: "var(--CP)"}}>← Back</Link>
 
       <h1 style={{ marginTop: 10 }}>{project.title}</h1>
       {project.previewImage && (
@@ -27,7 +27,7 @@ export default function ProjectDetails() {
             width: "100%",
             maxWidth: 900,
             borderRadius: 12,
-            margin: "12px 0",
+            margin: "12px 0"
           }}
         />
       )}
@@ -51,6 +51,7 @@ export default function ProjectDetails() {
             border: "1px solid currentColor",
             borderRadius: 10,
             textDecoration: "none",
+            color: "var(--CP)"
           }}
         >
           View Live Project
