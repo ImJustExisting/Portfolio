@@ -2,13 +2,16 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --CP: #F4C31E;
+  --CP: #f4c31e;
 
   color-scheme: light dark;
   --bg: #ffffff;
   --text: #111111;
   --muted: #444444;
   --nav-bg: rgba(255, 255, 255, 0.75);
+  --form: #e8e8e8;
+  --success: #606d5d;
+  --error: #830000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,6 +25,9 @@ html.dark {
   --text: #ffffff;
   --muted: #c9c9c9;
   --nav-bg: rgba(0, 0, 0, 0.6);
+  --form: #6b6b6b;
+  --success: #BFC7BD;
+  --error: #ef4444;
 }
 
 /* Use variables globally */
@@ -30,7 +36,9 @@ body {
   color: var(--text);
 }
 
-p, li, span {
+p,
+li,
+span {
   color: var(--text);
 }
 
