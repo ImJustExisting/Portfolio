@@ -1,42 +1,69 @@
-.SubButton{
-    background-color: var(--CP);
-    color: black;
-    padding: "10px 14px";
-    border: none;
-    height: 25px;
+.SubButton {
+  background-color: var(--CP);
+  color: black;
+  padding: "10px 14px";
+  border: none;
+  height: 25px;
 }
 
-.SubButton:hover{
-    background-color: var(--text);
-    color: var(--CP);
-    cursor: pointer;
+.SubButton:hover {
+  background-color: var(--text);
+  color: var(--CP);
+  cursor: pointer;
 }
 
-.inputCell{
-    display: block;
-    width: 100%;
-    padding: 10;
-    margin-top: 6;
-    background-color: var(--form);
-    color: var(--text);
-    border: none;
-    height: 25px;
+.inputCell {
+  display: block;
+  width: 100%;
+  height: 25px;
+  padding: 10;
+  margin-top: 6;
+  background-color: var(--form);
+  color: var(--text);
+  border: none;
 }
 
-
-.inputMes{
-    display: block;
-    width: 100%;
-    padding: 10;
-    margin-top: 6;
-    min-height: 140;
-    background-color: var(--form);
-    color: var(--text);
-    border: none;
-    height: 25px;
+.inputMes {
+  display: block;
+  width: 100%;
+  height: 25px;
+  padding: 10;
+  margin-top: 6;
+  min-height: 140;
+  background-color: var(--form);
+  color: var(--text);
+  border: none;
 }
 
-::placeholder{
-    color: var(--muted);
-    border: none;
+::placeholder {
+  color: var(--muted);
+  border: none;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.formLabel {
+  margin-top: 12;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.formError {
+  color: var(--error);
+  font-size: small;
+  margin-top: 6;
+  font-weight: bold;
+}
+
+.inputError {
+  border: 2px solid var(--error);
+}
+
+.labelError {
+  color: var(--error);
+}
+
+.formBannerError {
+  color: var(--error);
+  font-weight: 700;
+  margin: 12px 0;
 }
