@@ -2,6 +2,7 @@
     background-color: var(--CP);
     color: black;
     padding: "10px 14px";
+    border: none;
     height: 25px;
 }
 
