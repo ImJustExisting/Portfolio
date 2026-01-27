@@ -9,7 +9,7 @@ export default function About() {
 
       <p className={style.aboutME}>
         I’m Kaela Whelen, a front-end developer in progress with a strong focus
-        on designing eye catching, attentiong grabbing applications. I am to
+        on designing eye catching, attention grabbing applications. I am to
         really understand my client, delivering a product that resonates with
         them with every pixel.
       </p>
@@ -25,10 +25,10 @@ export default function About() {
         
       </p>
 
-      <p className={style.CTA}>
+      <h3 className={style.CTA}>
         Feel free to explore my portfolio to see some of my projects and get in
         touch if you'd like to collaborate!
-      </p>
+      </h3>
       </section>
       
       <section className={style.skills}>
