@@ -18,6 +18,14 @@
   color: var(--text);;
 }
 
+.navbar a:hover {
+  color: var(--CP);
+}
+
+.navbar a.active {
+  font-weight: bold;
+}
+
 .logo {
   width: 120px;
   height: auto;

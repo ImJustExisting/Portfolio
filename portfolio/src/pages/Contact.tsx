@@ -95,13 +95,13 @@ export default function Contact() {
       </p>
 
       {status === "success" && (
-        <div role="status" style={{ padding: 12, border: "1px solid #ccc", marginBottom: 12 }}>
+        <div role="status" style={{ padding: 12, backgroundColor: "var(--success)", marginBottom: 12 }}>
           Your message was sent successfully.
         </div>
       )}
 
       {status === "error" && (
-        <div role="alert" style={{ padding: 12, border: "1px solid #ccc", marginBottom: 12 }}>
+        <div role="alert" style={{ padding: 12, backgroundColor: "var(--error)", marginBottom: 12 }}>
           Something went wrong. Please try again.
         </div>
       )}
@@ -109,7 +109,7 @@ export default function Contact() {
       <form onSubmit={handleSubmit} noValidate>
         {/* Name */}
         <div style={{ marginBottom: 12 }}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" style={{color: "var(--text)"}}>Name</label>
           <input
             id="name"
             type="text"
@@ -118,7 +118,7 @@ export default function Contact() {
             onBlur={() => markTouched("name")}
             aria-invalid={Boolean(touched.name && errors.name)}
             aria-describedby={touched.name && errors.name ? "name-error" : undefined}
-            style={{ display: "block", width: "100%", padding: 10, marginTop: 6 }}
+            className={style.inputCell}
             placeholder="Your name"
           />
           {touched.name && errors.name && (
@@ -128,9 +128,8 @@ export default function Contact() {
           )}
         </div>
 
-        {/* Email */}
         <div style={{ marginBottom: 12 }}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" style={{color: "var(--text)"}}>Email</label>
           <input
             id="email"
             type="email"
@@ -139,7 +138,7 @@ export default function Contact() {
             onBlur={() => markTouched("email")}
             aria-invalid={Boolean(touched.email && errors.email)}
             aria-describedby={touched.email && errors.email ? "email-error" : undefined}
-            style={{ display: "block", width: "100%", padding: 10, marginTop: 6 }}
+            className={style.inputCell}
             placeholder="name@example.com"
           />
           {touched.email && errors.email && (
@@ -149,9 +148,8 @@ export default function Contact() {
           )}
         </div>
 
-        {/* Subject */}
         <div style={{ marginBottom: 12 }}>
-          <label htmlFor="subject">Subject</label>
+          <label htmlFor="subject" style={{color: "var(--text)"}}>Subject</label>
           <input
             id="subject"
             type="text"
@@ -160,7 +158,7 @@ export default function Contact() {
             onBlur={() => markTouched("subject")}
             aria-invalid={Boolean(touched.subject && errors.subject)}
             aria-describedby={touched.subject && errors.subject ? "subject-error" : undefined}
-            style={{ display: "block", width: "100%", padding: 10, marginTop: 6 }}
+            className={style.inputCell}
             placeholder="What is this about?"
           />
           {touched.subject && errors.subject && (
@@ -170,9 +168,8 @@ export default function Contact() {
           )}
         </div>
 
-        {/* Message */}
         <div style={{ marginBottom: 12 }}>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message" style={{color: "var(--text)"}}>Message</label>
           <textarea
             id="message"
             value={form.message}
@@ -180,7 +177,7 @@ export default function Contact() {
             onBlur={() => markTouched("message")}
             aria-invalid={Boolean(touched.message && errors.message)}
             aria-describedby={touched.message && errors.message ? "message-error" : undefined}
-            style={{ display: "block", width: "100%", padding: 10, marginTop: 6, minHeight: 140 }}
+            className={style.inputMes}
             placeholder="Write your message (at least 20 characters)..."
           />
           {touched.message && errors.message && (
