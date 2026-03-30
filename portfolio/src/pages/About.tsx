@@ -1,11 +1,16 @@
+import SectionHeading from "../stories/SectionHeading";
+import TagList from "../stories/TagList";
 import style from "./styles/about.module.css";
 
 export default function About() {
   return (
     <>
       <main className={style.about}>
-      <section className={style.hero}>
-        <h1 className={style.title}>About Me</h1>
+        <section className={style.hero}>
+          <SectionHeading
+            title="About Me"
+            level={1}
+          />
 
       <p className={style.aboutME}>
         I’m Kaela Whelen, a front-end developer in progress with a strong focus
@@ -32,20 +37,27 @@ export default function About() {
       </section>
       
       <section className={style.skills}>
-        <h2>Skills and Tools</h2>
-        <div className={style.grid}>
-          <div className={style.card}>
-            <h3>Front-end</h3>
-            <p>React, TypeScript, Vite, Vue, HTML, CSS, Tailwind CSS</p>
-          </div>
+          <SectionHeading title="Skills and Tools" level={2} />
 
-          <div className={style.card}>
-            <h3>Back-end</h3>
-            <p>Firebase / Firestore, Javascript, JSON, C# & Python</p>
-          </div>
+          <div className={style.grid}>
+            <div className={style.card}>
+              <h3>Front-end</h3>
+              <TagList
+                tags={["React", "TypeScript", "Vite", "Vue", "HTML", "CSS", "Tailwind CSS"]}
+                color="black"
+              />
+            </div>
 
-        </div>
-      </section>
+            <div className={style.card}>
+              <h3>Back-end</h3>
+              <TagList
+                tags={["Firebase", "Firestore", "JavaScript", "JSON", "C#", "Python"]}
+                color="black"
+              />
+            </div>
+
+          </div>
+        </section>
       </main>
     </>
   );
