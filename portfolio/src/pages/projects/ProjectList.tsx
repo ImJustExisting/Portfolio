@@ -1,28 +1,35 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { projects } from "../../data/Projects";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { fetchProjects, setCategory, setQuery, setSort } from "../../store/projectSlice";
+import { useEffect } from "react";
+import ProjectCard from "../../stories/ProjectCard";
 import type { ProjectCategory } from "../../data/Projects";
 import style from "./projects.module.css";
 
 type SortOption = "title-asc" | "title-desc";
 
-export default function ProjectsList() {
-  const [category, setCategory] = useState<ProjectCategory | "All">("All");
-  const [query, setQuery] = useState("");
-  const [sort, setSort] = useState<SortOption>("title-asc");
+const categories: Array<ProjectCategory | "All"> = [
+  "All",
+  "Web",
+  "Mobile",
+  "Design",
+];
 
-  const categories: Array<ProjectCategory | "All"> = [
-    "All",
-    "Web",
-    "Mobile",
-    "Design",
-  ];
+export default function ProjectsList() {
+  const dispatch = useAppDispatch();
+  const {items, status, error, selectedCategory, query, sort} = useAppSelector((state) => state.projects);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProjects());
+    }
+  }, [dispatch, status]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
 
-    let result = projects.filter((p) => {
-      const matchesCategory = category === "All" || p.category === category;
+    let result = items.filter((p) => {
+      const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
       const matchesQuery =
         !q ||
         p.title.toLowerCase().includes(q) ||
@@ -31,13 +38,21 @@ export default function ProjectsList() {
       return matchesCategory && matchesQuery;
     });
 
-    result = result.sort((a, b) => {
-      if (sort === "title-asc") return a.title.localeCompare(b.title);
-      return b.title.localeCompare(a.title);
-    });
+    result = [...result].sort((a, b) =>
+      sort === "title-asc"
+        ? a.title.localeCompare(b.title)
+        : b.title.localeCompare(a.title)
+    );
 
     return result;
-  }, [category, query, sort]);
+  }, [items, selectedCategory, query, sort]);
+
+  if (status === "loading") {
+    return <p style={{ padding: 16 }}>Loading projects...</p>;
+  }
+  if (status === "failed") {
+    return <p style={{ padding: 16 }}>Error: {error}</p>;
+  }
 
   return (
     <section style={{ padding: 16 }}>
@@ -46,14 +61,14 @@ export default function ProjectsList() {
       >
         <input
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => dispatch(setQuery(e.target.value))}
           placeholder="Search by title or tag…"
           className={style.searchTag}
         />
 
         <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value as any)}
+          value={selectedCategory}
+          onChange={(e) => dispatch(setCategory(e.target.value as ProjectCategory | "All"))}
           className={style.selector}
         >
           {categories.map((c) => (
@@ -65,7 +80,7 @@ export default function ProjectsList() {
 
         <select
           value={sort}
-          onChange={(e) => setSort(e.target.value as SortOption)}
+          onChange={(e) => dispatch(setSort(e.target.value as SortOption))}
           className={style.sort}
         >
           <option value="title-asc">Title A–Z</option>
@@ -81,39 +96,16 @@ export default function ProjectsList() {
         }}
       >
         {filtered.map((p) => (
-          <Link
-            key={p.id}
-            to={`/projects/${p.id}`}
-            style={{ textDecoration: "none", color: "inherit", backgroundColor: "var(--CP)", borderRadius: "12px" }}
-          >
-            <article
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: 12,
-                overflow: "hidden",
-              }}
-            >
-              {p.previewImage && (
-                <img
-                  src={p.previewImage}
-                  alt={`${p.title} preview`}
-                  style={{
-                    width: "100%",
-                    height: 160,
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                  loading="lazy"
-                />
-              )}
-
-              <div style={{ padding: 14 }}>
-                <h3 style={{ margin: "0 0 6px" }}>{p.title}</h3>
-                <p style={{ margin: 0 }}>{p.shortDescription}</p>
-                <small style={{color: "var(--text)"}}>{p.category} • {p.tags.join(" · ")}</small>
-              </div>
-            </article>
-          </Link>
+          <div key={p.id}>
+            <ProjectCard 
+            id={p.id}
+            title={p.title}
+            shortDescription={p.shortDescription}
+            previewImage={p.previewImage}
+            category={p.category}
+            tags={p.tags}
+            />
+          </div>
         ))}
       </div>
 
