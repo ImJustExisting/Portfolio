@@ -24,6 +24,7 @@
 
 .navbar a.active {
   font-weight: bold;
+  color: var(--CP);
 }
 
 .logo {
