@@ -1,3 +1,4 @@
+import SectionHeading from "../stories/SectionHeading";
 import style from "./styles/home.module.css";
 
 export default function Home() {
@@ -5,9 +6,13 @@ export default function Home() {
     <>
       <div className={style.hero}>
         <div className={style.overlay}>
-          <h1>Home</h1>
+          <SectionHeading
+            title="Welcome to my Portfolio"
+            level={1}
+            align="center"
+          />
 
-          <p>Hi, welcome to my portfolio. My name's Kaela</p>
+          <p>My name's Kaela</p>
           <p>I am a student at the Malta College of Arts, Science & Technology (MCAST), currently pursuing a Bachelors Degree (Bsc) with honors in Creative Computing.</p>
           <p>Take a look around to see some of my work!</p>
         </div>

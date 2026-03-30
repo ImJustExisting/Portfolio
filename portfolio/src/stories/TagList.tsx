@@ -3,7 +3,7 @@ type Props = {
   color?: string;
 };
 
-export default function TagList({ tags, color = "var(--muted)" }: Props) {
+export default function TagList({ tags, color = "var(--text)" }: Props) {
   if (tags.length === 0) return null;
 
   return (
