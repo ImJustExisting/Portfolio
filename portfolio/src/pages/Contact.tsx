@@ -3,6 +3,7 @@ import { useMemo, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { submitContactForm, resetContactStatus } from "../store/contactSlice";
 import StatusBanner from "../stories/StatusBanner";
+import Button from "../stories/Button";
 import style from "./styles/contact.module.css";
 
 type FormState = {
