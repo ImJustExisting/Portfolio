@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { projects as localProjects } from "../data/projectsData";
 
 export type ProjectCategory = "Web" | "Mobile" | "Design";
 
@@ -39,9 +40,9 @@ const initialState: ProjectsState = {
 export const fetchProjects = createAsyncThunk<Project[]>(
   "projects/fetchProjects",
   async () => {
-    const res = await fetch("/data/projects.json"); 
-    if (!res.ok) throw new Error("Failed to load projects");
-    return (await res.json()) as Project[];
+    // simulates an async fetch for loading state demonstration
+    await new Promise((r) => setTimeout(r, 300));
+    return localProjects;
   }
 );
 
