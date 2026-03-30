@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchProjects, setCategory, setQuery, setSort } from "../../store/projectSlice";
 import { useEffect } from "react";
