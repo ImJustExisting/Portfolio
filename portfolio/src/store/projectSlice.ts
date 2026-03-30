@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { projects as localProjects } from "../data/projectsData";
+import { projects as localProjects } from "../data/Projects";
 
 export type ProjectCategory = "Web" | "Mobile" | "Design";
 
