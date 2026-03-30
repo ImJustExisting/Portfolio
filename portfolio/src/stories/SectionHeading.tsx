@@ -3,6 +3,7 @@ type Props = {
   subtitle?: string;
   level?: 1 | 2 | 3;
   align?: "left" | "center" | "right";
+  color?: string;
 };
 
 export default function SectionHeading({
@@ -10,6 +11,7 @@ export default function SectionHeading({
   subtitle,
   level = 2,
   align = "left",
+  color = "var(--text)",
 }: Props) {
   const Tag = `h${level}` as "h1" | "h2" | "h3";
 
@@ -18,7 +20,7 @@ export default function SectionHeading({
       <Tag
         style={{
           margin: 0,
-          color: "var(--text)",
+          color: color,
           borderBottom: "3px solid var(--CP)",
           display: "inline-block",
           paddingBottom: 4,
@@ -27,7 +29,7 @@ export default function SectionHeading({
         {title}
       </Tag>
       {subtitle && (
-        <p style={{ margin: "8px 0 0", color: "var(--muted)", fontSize: 15 }}>
+        <p style={{ margin: "8px 0 0", color: color, fontSize: 15, opacity: 0.85 }}>
           {subtitle}
         </p>
       )}

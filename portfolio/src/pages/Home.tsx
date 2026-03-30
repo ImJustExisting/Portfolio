@@ -10,6 +10,7 @@ export default function Home() {
             title="Welcome to my Portfolio"
             level={1}
             align="center"
+            color="white"
           />
 
           <p>My name's Kaela</p>
