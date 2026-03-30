@@ -249,13 +249,11 @@ export default function Contact() {
           )}
         </div>
 
-        <button
+        <Button
           type="submit"
+          label={status === "loading" ? "Sending..." : "Send message"}
           disabled={status === "loading" || !isFormValid}
-          className={style.SubButton}
-        >
-          {status === "loading" ? "Sending..." : "Send message"}
-        </button>
+        />
       </form>
     </main>
   );
