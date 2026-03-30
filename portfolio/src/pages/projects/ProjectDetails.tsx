@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../../data/Projects";
-import TagList from "../../components/TagList";
+import TagList from "../../stories/TagList";
 
 export default function ProjectDetails() {
   const { projectId } = useParams<{ projectId: string }>();
