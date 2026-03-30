@@ -1,5 +1,8 @@
 import type { FormEvent } from "react";
 import { useMemo, useRef, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { submitContactForm, resetContactStatus } from "../store/contactSlice";
+import StatusBanner from "../stories/StatusBanner";
 import style from "./styles/contact.module.css";
 
 type FormState = {
@@ -24,6 +27,9 @@ function isValidEmail(email: string) {
 }
 
 export default function Contact() {
+  const dispatch = useAppDispatch();
+  const { status, error} = useAppSelector((state) => state.contact);
+
   const [form, setForm] = useState<FormState>(initialState);
   const [touched, setTouched] = useState<Record<keyof FormState, boolean>>({
     name: false,
@@ -32,10 +38,7 @@ export default function Contact() {
     message: false,
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitAttempted, setSubmitAttempted] = useState(false);
-
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -64,7 +67,7 @@ export default function Contact() {
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
-    setStatus("idle");
+    if (status !== "idle") dispatch(resetContactStatus());
   }
 
   function markTouched<K extends keyof FormState>(key: K) {
@@ -85,20 +88,12 @@ export default function Contact() {
       return;
     }
 
-    setIsSubmitting(true);
-    setStatus("idle");
+    const result = await dispatch(submitContactForm(form));
 
-    try {
-      await new Promise((r) => setTimeout(r, 700));
-
-      setStatus("success");
+    if (submitContactForm.fulfilled.match(result)) {
       setForm(initialState);
       setTouched({ name: false, email: false, subject: false, message: false });
-      setSubmitAttempted(false); 
-    } catch {
-      setStatus("error");
-    } finally {
-      setIsSubmitting(false);
+      setSubmitAttempted(false);
     }
   }
 
@@ -115,35 +110,30 @@ export default function Contact() {
         questions about my work.
       </p>
 
-      {status === "success" && (
-        <div
-          role="status"
-          style={{
-            padding: 12,
-            backgroundColor: "var(--success)",
-            marginBottom: 12,
-          }}
-        >
-          Your message was sent successfully.
+      {status === "succeeded" && (
+        <div style={{ marginBottom: 12 }}>
+          <StatusBanner
+            type="success"
+            message="Your message was sent successfully."
+          />
         </div>
       )}
 
-      {status === "error" && (
-        <div
-          role="alert"
-          style={{
-            padding: 12,
-            backgroundColor: "var(--error)",
-            marginBottom: 12,
-          }}
-        >
-          Something went wrong. Please try again.
+      {status === "failed" && (
+        <div style={{ marginBottom: 12 }}>
+          <StatusBanner
+            type="error"
+            message={error ?? "Something went wrong. Please try again."}
+          />
         </div>
       )}
 
-      {submitAttempted && !isFormValid && status !== "success" && (
-        <div role="alert" className={style.formBannerError}>
-          Please fill in the required fields below.
+      {submitAttempted && !isFormValid && status !== "succeeded" && (
+        <div style={{ marginBottom: 12 }}>
+          <StatusBanner
+            type="info"
+            message="Please fill out all required fields correctly before submitting."
+          />
         </div>
       )}
 
@@ -261,10 +251,10 @@ export default function Contact() {
 
         <button
           type="submit"
-          disabled={!isFormValid || isSubmitting}
+          disabled={status === "loading" || !isFormValid}
           className={style.SubButton}
         >
-          {isSubmitting ? "Sending..." : "Send message"}
+          {status === "loading" ? "Sending..." : "Send message"}
         </button>
       </form>
     </main>

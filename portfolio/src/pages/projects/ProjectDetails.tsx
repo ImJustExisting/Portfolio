@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../../data/Projects";
+import TagList from "../../components/TagList";
 
 export default function ProjectDetails() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -36,7 +37,10 @@ export default function ProjectDetails() {
       <p>
         <strong>Category:</strong> {project.category}
         <br />
-        <strong>Tags:</strong> {project.tags.join(", ")}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
+          <strong>Tags:</strong>
+          <TagList tags={project.tags} />
+        </div>
       </p>
 
       <div
